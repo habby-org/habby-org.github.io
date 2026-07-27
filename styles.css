@@ -578,7 +578,12 @@ a {
 }
 
 .download h2 {
-  font-size: clamp(2.55rem, 7vw, 5.35rem);
+  font-size: clamp(2rem, 6.2vw, 4.1rem);
+}
+
+.download__headline-line {
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .download__description {
@@ -890,7 +895,7 @@ a {
   }
 
   .download h2 {
-    font-size: clamp(2.45rem, 12vw, 4rem);
+    font-size: clamp(1.8rem, 9vw, 2.75rem);
   }
 
   .download__description {
