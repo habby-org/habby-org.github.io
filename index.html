@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f4f3ec" />
+    <meta
+      name="description"
+      content="habbyは、好きな趣味のイベントを見つけて、参加して、自分でもかんたんに開催できるアプリです。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:site_name" content="habby" />
+    <meta property="og:title" content="habby — 好きなことを、いっしょに楽しもう。" />
+    <meta
+      property="og:description"
+      content="趣味でつながる、気軽なイベントアプリ。"
+    />
+    <meta property="og:url" content="https://habby-org.github.io/" />
+    <meta property="og:image" content="https://habby-org.github.io/assets/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="habby — 好きなことを、いっしょに楽しもう。" />
+    <meta
+      name="twitter:description"
+      content="趣味でつながる、気軽なイベントアプリ。"
+    />
+    <meta name="twitter:image" content="https://habby-org.github.io/assets/og.png" />
+    <link rel="icon" href="./assets/habby-icon.png" />
+    <link rel="apple-touch-icon" href="./assets/habby-icon.png" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>habby — 好きなことを、いっしょに楽しもう。</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">メインコンテンツへ</a>
+
+    <header class="topbar" aria-label="サイトヘッダー">
+      <a class="brand" href="#home" aria-label="habby トップへ">
+        <img class="brand__icon" src="./assets/habby-icon.png" alt="" width="40" height="40" />
+        <span class="brand__name">habby</span>
+      </a>
+      <button class="topbar__download" type="button" data-scroll-download>
+        ダウンロード
+        <span aria-hidden="true">↓</span>
+      </button>
+    </header>
+
+    <nav class="section-nav" aria-label="ページ内ナビゲーション">
+      <a class="section-nav__dot is-active" href="#home" aria-label="トップ" data-section-link></a>
+      <a class="section-nav__dot" href="#find" aria-label="イベントを探す" data-section-link></a>
+      <a class="section-nav__dot" href="#join" aria-label="イベントに参加する" data-section-link></a>
+      <a class="section-nav__dot" href="#create" aria-label="イベントを作る" data-section-link></a>
+      <a class="section-nav__dot" href="#manage" aria-label="予定を管理する" data-section-link></a>
+      <a class="section-nav__dot" href="#download" aria-label="ダウンロード" data-section-link></a>
+    </nav>
+
+    <main id="main">
+      <section class="panel hero" id="home" data-section>
+        <div class="orb orb--hero-one" aria-hidden="true"></div>
+        <div class="orb orb--hero-two" aria-hidden="true"></div>
+
+        <div class="hero__content">
+          <p class="eyebrow">趣味でつながるイベントアプリ</p>
+          <h1>好きなことを、<br /><span>いっしょに楽しもう。</span></h1>
+          <p class="hero__description">
+            気になるイベントを見つけて、参加して、<br class="desktop-only" />
+            自分でもかんたんに開催できる。
+          </p>
+          <button class="hero__cta" type="button" data-scroll-download>
+            habbyをはじめる
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+
+        <div class="hero__visual" aria-label="habbyのアプリ画面">
+          <div class="phone phone--hero-back" aria-hidden="true">
+            <img src="./assets/meetup-detail.png" alt="" width="1080" height="1920" />
+          </div>
+          <div class="phone phone--hero-front">
+            <img
+              src="./assets/meetup-list.png"
+              alt="カテゴリ別にイベントを探せるhabbyのイベント一覧画面"
+              width="1080"
+              height="1920"
+            />
+          </div>
+        </div>
+
+        <a class="scroll-cue" href="#find">
+          <span>スクロール</span>
+          <span class="scroll-cue__line" aria-hidden="true"></span>
+        </a>
+      </section>
+
+      <section class="panel feature feature--find" id="find" data-section>
+        <div class="feature__inner">
+          <div class="feature__copy">
+            <p class="feature__number">01 / 探す</p>
+            <h2>ぴったりのイベントが<br />すぐ見つかる。</h2>
+            <p>
+              バドミントン、フットサル、バレーボール。カテゴリから気になるイベントを、
+              すばやく探せます。
+            </p>
+          </div>
+          <div class="feature__visual">
+            <div class="feature__glow" aria-hidden="true"></div>
+            <div class="phone phone--feature">
+              <img
+                src="./assets/meetup-list.png"
+                alt="イベントの日時、場所、参加費、空き人数を確認できる一覧画面"
+                width="1080"
+                height="1920"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel feature feature--join feature--reverse" id="join" data-section>
+        <div class="feature__inner">
+          <div class="feature__copy">
+            <p class="feature__number">02 / 参加する</p>
+            <h2>気になるイベントへ、<br />かんたん参加。</h2>
+            <p>
+              日時・場所・参加費・空き状況をひと目で確認。そのまま参加できて、
+              開催が確定したらお知らせします。
+            </p>
+          </div>
+          <div class="feature__visual">
+            <div class="feature__glow" aria-hidden="true"></div>
+            <div class="phone phone--feature">
+              <img
+                src="./assets/meetup-detail.png"
+                alt="イベントの詳細を確認して参加できる画面"
+                width="1080"
+                height="1920"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel feature feature--create" id="create" data-section>
+        <div class="feature__inner">
+          <div class="feature__copy">
+            <p class="feature__number">03 / 作る</p>
+            <h2>イベント作成も、<br />シンプルに。</h2>
+            <p>
+              カテゴリ、日時、場所、定員を入力するだけ。募集から開催確定まで、
+              迷わずスムーズに進められます。
+            </p>
+          </div>
+          <div class="feature__visual">
+            <div class="feature__glow" aria-hidden="true"></div>
+            <div class="phone phone--feature">
+              <img
+                src="./assets/create-meetup.png"
+                alt="必要な情報をわかりやすく入力できるイベント作成画面"
+                width="1080"
+                height="1920"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel feature feature--manage feature--reverse" id="manage" data-section>
+        <div class="feature__inner">
+          <div class="feature__copy">
+            <p class="feature__number">04 / 管理する</p>
+            <h2>参加・作成した予定を、<br />ひとつに。</h2>
+            <p>
+              参加するイベントも、自分で作ったイベントも、まとめて見やすく管理。
+              次の予定をいつでも確認できます。
+            </p>
+          </div>
+          <div class="feature__visual">
+            <div class="feature__glow" aria-hidden="true"></div>
+            <div class="phone phone--feature">
+              <img
+                src="./assets/my-meetups.png"
+                alt="参加したイベントと作成したイベントを管理できるマイイベント画面"
+                width="1080"
+                height="1920"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel download" id="download" data-section>
+        <div class="download__orb download__orb--one" aria-hidden="true"></div>
+        <div class="download__orb download__orb--two" aria-hidden="true"></div>
+
+        <div class="download__content">
+          <img
+            class="download__icon"
+            src="./assets/habby-icon.png"
+            alt="habby"
+            width="112"
+            height="112"
+          />
+          <p class="eyebrow eyebrow--light">COMING SOON</p>
+          <h2>好きな趣味を、<br />次の出会いへ。</h2>
+          <p class="download__description">
+            habbyはApp Store・Google Playで<br />近日公開予定です。
+          </p>
+
+          <div class="store-buttons" aria-describedby="store-status">
+            <button class="store-button" type="button" data-coming-soon>
+              <span class="store-button__platform" aria-hidden="true">iOS</span>
+              <span class="store-button__copy">
+                <small>近日公開</small>
+                <strong>App Store</strong>
+              </span>
+            </button>
+            <button class="store-button" type="button" data-coming-soon>
+              <span class="store-button__platform" aria-hidden="true">▶</span>
+              <span class="store-button__copy">
+                <small>近日公開</small>
+                <strong>Google Play</strong>
+              </span>
+            </button>
+          </div>
+          <p id="store-status" class="store-status" role="status" aria-live="polite">
+            ストア公開まで、もう少しお待ちください。
+          </p>
+        </div>
+
+        <footer class="footer">
+          <p>お問い合わせ <a href="mailto:kurooru@hufs.ac.kr">kurooru@hufs.ac.kr</a></p>
+          <p>© 2026 habby</p>
+        </footer>
+      </section>
+    </main>
+
+    <script src="./script.js" defer></script>
+  </body>
+</html>
