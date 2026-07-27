@@ -197,6 +197,7 @@ a {
 .hero {
   display: grid;
   align-items: center;
+  isolation: isolate;
   padding:
     calc(var(--topbar-height) + max(48px, env(safe-area-inset-top)))
     max(24px, calc((100vw - var(--content-width)) / 2))
@@ -270,6 +271,7 @@ a {
   bottom: -9vh;
   width: min(43vw, 510px);
   height: min(78vh, 780px);
+  pointer-events: none;
 }
 
 .phone {
@@ -897,11 +899,22 @@ a {
 
 @media (max-height: 710px) and (max-width: 799px) {
   .hero__description {
-    display: none;
+    margin-top: 9px;
+    font-size: 0.78rem;
+    line-height: 1.55;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.1rem, 10.8vw, 2.8rem);
   }
 
   .hero__cta {
     margin-top: 14px;
+  }
+
+  .hero__visual {
+    bottom: -9svh;
+    height: 44svh;
   }
 
   .feature__copy > p:last-child {
