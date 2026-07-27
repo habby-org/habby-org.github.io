@@ -598,8 +598,12 @@ a {
   border-radius: 13px;
   background: var(--white);
   color: var(--ink);
-  font-size: 0.73rem;
-  font-weight: 850;
+}
+
+.store-button__platform img {
+  display: block;
+  width: 25px;
+  height: 25px;
 }
 
 .store-button__copy {
