@@ -1,3 +1,35 @@
+@font-face {
+  font-family: "M PLUS Rounded 1c";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./assets/fonts/m-plus-rounded-1c-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "M PLUS Rounded 1c";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./assets/fonts/m-plus-rounded-1c-500.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "M PLUS Rounded 1c";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./assets/fonts/m-plus-rounded-1c-700.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "M PLUS Rounded 1c";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("./assets/fonts/m-plus-rounded-1c-800.woff2") format("woff2");
+}
+
 :root {
   --cream: #f4f3ec;
   --cream-deep: #e8e6da;
@@ -36,8 +68,8 @@ body {
   background: var(--cream);
   color: var(--ink);
   font-family:
-    -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic",
-    "Noto Sans JP", sans-serif;
+    "M PLUS Rounded 1c", -apple-system, BlinkMacSystemFont, "Hiragino Sans",
+    "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -111,7 +143,7 @@ a {
 
 .brand__name {
   font-size: 1.28rem;
-  font-weight: 850;
+  font-weight: 800;
   letter-spacing: -0.04em;
 }
 
@@ -128,7 +160,7 @@ a {
   color: var(--white);
   cursor: pointer;
   font-size: 0.82rem;
-  font-weight: 750;
+  font-weight: 700;
   letter-spacing: -0.02em;
   transition:
     transform 180ms ease,
@@ -237,7 +269,7 @@ a {
 .feature h2,
 .download h2 {
   margin: 0;
-  font-weight: 850;
+  font-weight: 800;
   letter-spacing: -0.065em;
   line-height: 1.11;
   word-break: keep-all;
@@ -255,7 +287,7 @@ a {
   margin: 24px 0 0;
   color: var(--muted);
   font-size: clamp(0.98rem, 1.7vw, 1.15rem);
-  font-weight: 550;
+  font-weight: 500;
   line-height: 1.9;
 }
 
@@ -346,7 +378,7 @@ a {
   gap: 12px;
   color: var(--muted);
   font-size: 0.68rem;
-  font-weight: 750;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-decoration: none;
 }
@@ -430,7 +462,7 @@ a {
   margin: 23px 0 0;
   color: var(--muted);
   font-size: clamp(0.98rem, 1.6vw, 1.14rem);
-  font-weight: 540;
+  font-weight: 500;
   line-height: 1.9;
 }
 
@@ -553,7 +585,7 @@ a {
   margin: 21px 0 0;
   color: rgb(255 255 255 / 68%);
   font-size: clamp(0.96rem, 1.8vw, 1.12rem);
-  font-weight: 540;
+  font-weight: 500;
   line-height: 1.85;
 }
 
@@ -618,13 +650,13 @@ a {
   margin-bottom: 1px;
   color: rgb(255 255 255 / 58%);
   font-size: 0.62rem;
-  font-weight: 650;
+  font-weight: 700;
 }
 
 .store-button__copy strong {
   overflow: hidden;
   font-size: 0.98rem;
-  font-weight: 760;
+  font-weight: 700;
   letter-spacing: -0.02em;
   text-overflow: ellipsis;
   white-space: nowrap;
