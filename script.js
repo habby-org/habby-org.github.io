@@ -2,7 +2,6 @@ const downloadSection = document.querySelector("#download");
 const downloadTriggers = document.querySelectorAll("[data-scroll-download]");
 const sectionLinks = [...document.querySelectorAll("[data-section-link]")];
 const sections = [...document.querySelectorAll("[data-section]")];
-const storeStatus = document.querySelector("#store-status");
 
 downloadTriggers.forEach((trigger) => {
   trigger.addEventListener("click", () => {
@@ -33,12 +32,3 @@ const activeSectionObserver = new IntersectionObserver(
 );
 
 sections.forEach((section) => activeSectionObserver.observe(section));
-
-document.querySelectorAll("[data-coming-soon]").forEach((button) => {
-  button.addEventListener("click", () => {
-    if (!storeStatus) return;
-
-    storeStatus.classList.remove("is-highlighted");
-    requestAnimationFrame(() => storeStatus.classList.add("is-highlighted"));
-  });
-});

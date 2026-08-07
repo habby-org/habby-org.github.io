@@ -668,17 +668,6 @@ a {
   white-space: nowrap;
 }
 
-.store-status {
-  min-height: 21px;
-  margin: 13px 0 0;
-  color: rgb(255 255 255 / 43%);
-  font-size: 0.72rem;
-}
-
-.store-status.is-highlighted {
-  color: var(--lime);
-}
-
 .download__orb {
   position: absolute;
   border-radius: 50%;

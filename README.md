@@ -15,5 +15,4 @@ Then open `http://localhost:4173`.
 
 ## Store links
 
-The store controls currently show a coming-soon message. Add the App Store and Google Play URLs to
-`index.html` after each listing is published.
+Both store controls link directly to the published habby listings in `index.html`.
