@@ -23,9 +23,15 @@ itself without a commit here:
 gh api repos/habby-org/habby-org.github.io/dispatches -f event_type=app-updated
 ```
 
-Because `habby-org/app` is private, the workflow needs a token that can read it: a fine-grained PAT
-with **Contents: Read** on `habby-org/app`, stored as the `APP_REPO_TOKEN` secret. The default
-`GITHUB_TOKEN` is scoped to this repository and cannot reach the other one.
+Two secrets:
+
+| Secret           | What it is                                                                                                             |
+|------------------|------------------------------------------------------------------------------------------------------------------------|
+| `APP_REPO_TOKEN` | fine-grained PAT with **Contents: Read** on `habby-org/app`. That repository is private, and the default `GITHUB_TOKEN` is scoped to this one. |
+| `HABBY_LIFF_ID`  | the LIFF app LINE Login redirects back to. A LIFF app is registered against one endpoint URL, so it belongs to this deployment, not to the app's source. |
+
+Without `HABBY_LIFF_ID` the site still builds and still shows the LINE button; tapping it reports
+that this build was not configured for login.
 
 ## Local preview
 
