@@ -27,6 +27,21 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      # Without this, a missing or under-scoped token surfaces as a bare "Repository not found"
+      # from actions/checkout, which reads as though habby-org/app had been deleted rather than
+      # simply being unreadable from here.
+      - name: Check the app repository token is present
+        env:
+          APP_REPO_TOKEN: ${{ secrets.APP_REPO_TOKEN }}
+        run: |
+          if [ -z "${APP_REPO_TOKEN}" ]; then
+            echo "::error::APP_REPO_TOKEN is not set, so this build cannot read habby-org/app."
+            echo "habby-org/app is private, and the default GITHUB_TOKEN is scoped to this"
+            echo "repository only. Create a fine-grained personal access token with"
+            echo "Contents: Read on habby-org/app, and store it here as the APP_REPO_TOKEN secret."
+            exit 1
+          fi
+
       - name: Check out this site
         uses: actions/checkout@v4
 
