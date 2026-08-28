@@ -23,15 +23,12 @@ itself without a commit here:
 gh api repos/habby-org/habby-org.github.io/dispatches -f event_type=app-updated
 ```
 
-Two secrets:
+One secret, and one optional override:
 
 | Secret           | What it is                                                                                                             |
 |------------------|------------------------------------------------------------------------------------------------------------------------|
 | `APP_REPO_TOKEN` | fine-grained PAT with **Contents: Read** on `habby-org/app`. That repository is private, and the default `GITHUB_TOKEN` is scoped to this one. |
-| `HABBY_LIFF_ID`  | the LIFF app LINE Login redirects back to. A LIFF app is registered against one endpoint URL, so it belongs to this deployment, not to the app's source. |
-
-Without `HABBY_LIFF_ID` the site still builds and still shows the LINE button; tapping it reports
-that this build was not configured for login.
+| `HABBY_LIFF_ID`  | **optional.** The app already defaults to the LIFF app registered against this site's URL. Set this only to point a deployment at a different one. |
 
 ## Local preview
 

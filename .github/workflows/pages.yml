@@ -54,10 +54,9 @@ jobs:
       # The runner's own Android SDK, because the app module applies the Android application plugin
       # even when only the web target is being built. No `local.properties` is needed: the plugin
       # falls back to ANDROID_HOME, which the runner image already sets.
-      # HABBY_LIFF_ID names the LIFF app LINE redirects back to, and a LIFF app is tied to one
-      # endpoint URL — so it belongs to this deployment rather than to the app repository. Without
-      # it the site still builds and still shows the LINE button; the button then reports that the
-      # build was not configured for login.
+      # HABBY_LIFF_ID is an override, not a requirement: the app repository already defaults to
+      # the LIFF app registered against this site's own URL. Set the secret only to point a
+      # deployment at a different LIFF app; leaving it unset falls through to that default.
       - name: Build the web app
         working-directory: .app
         env:
