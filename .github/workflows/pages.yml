@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - main
+  # So a release of the app can publish itself without a commit here:
+  #   gh api repos/habby-org/habby-org.github.io/dispatches -f event_type=app-updated
+  repository_dispatch:
+    types:
+      - app-updated
   workflow_dispatch:
 
 permissions:
@@ -22,16 +27,65 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Check out this site
         uses: actions/checkout@v4
+
+      # habby-org/app is private, so this needs a token that can read it — a fine-grained PAT with
+      # Contents: Read on habby-org/app, stored here as APP_REPO_TOKEN. The default GITHUB_TOKEN is
+      # scoped to this repository and cannot reach the other one.
+      - name: Check out the app
+        uses: actions/checkout@v4
+        with:
+          repository: habby-org/app
+          ref: main
+          token: ${{ secrets.APP_REPO_TOKEN }}
+          path: .app
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+          cache-dependency-path: |
+            .app/gradle/wrapper/gradle-wrapper.properties
+            .app/gradle/libs.versions.toml
+
+      # The runner's own Android SDK, because the app module applies the Android application plugin
+      # even when only the web target is being built. No `local.properties` is needed: the plugin
+      # falls back to ANDROID_HOME, which the runner image already sets.
+      # HABBY_LIFF_ID names the LIFF app LINE redirects back to, and a LIFF app is tied to one
+      # endpoint URL — so it belongs to this deployment rather than to the app repository. Without
+      # it the site still builds and still shows the LINE button; the button then reports that the
+      # build was not configured for login.
+      - name: Build the web app
+        working-directory: .app
+        env:
+          HABBY_LIFF_ID: ${{ secrets.HABBY_LIFF_ID }}
+        run: ./gradlew --no-daemon :composeApp:wasmJsBrowserDistribution
+
+      - name: Assemble the site
+        run: |
+          set -euo pipefail
+          rm -rf _site
+          mkdir -p _site/intro
+          cp -R .app/composeApp/build/dist/wasmJs/productionExecutable/. _site/
+          # Source maps are a third of the payload and only useful with the sources, which are not
+          # published here.
+          rm -f _site/*.js.map
+          cp -R intro/. _site/intro/
+          cp .nojekyll robots.txt sitemap.xml _site/
+          echo "--- assembled site ---"
+          du -sh _site
+          ls -la _site
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload static site
+      - name: Upload the site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
 
       - name: Deploy
         id: deployment
