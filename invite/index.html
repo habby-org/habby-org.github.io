@@ -29,14 +29,10 @@
       .mark {
         width: 56px;
         height: 56px;
-        display: grid;
-        place-items: center;
         margin: 0 auto 18px;
         border-radius: 18px;
-        background: linear-gradient(145deg, #00B3A6, #7AC943);
-        color: white;
-        font-weight: 900;
-        font-size: 23px;
+        display: block;
+        object-fit: cover;
       }
       h1 { margin: 0; font-size: 21px; font-weight: 800; }
       p { margin: 12px 0 0; color: #5F6875; font-size: 14px; line-height: 1.65; }
@@ -51,7 +47,7 @@
   </head>
   <body>
     <main>
-      <div class="mark" aria-hidden="true">h</div>
+      <img class="mark" src="./assets/habby-icon.png" alt="habby" />
       <h1>habby を開いています</h1>
       <p id="message">アプリをお持ちでない場合は、ストアへご案内します。</p>
       <a id="fallback" href="/intro/">habby の紹介を見る</a>
