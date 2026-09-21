@@ -117,7 +117,7 @@ jobs:
             echo "::warning::No Android signing certificate SHA-256 is configured; Android App Links are disabled."
             printf '[]\n' > _site/.well-known/assetlinks.json
           fi
-          cp .nojekyll robots.txt sitemap.xml _site/
+          cp .nojekyll robots.txt sitemap.xml favicon.png _site/
           echo "--- assembled site ---"
           du -sh _site
           ls -la _site
