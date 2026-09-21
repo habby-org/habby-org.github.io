@@ -80,15 +80,43 @@ jobs:
         run: ./gradlew --no-daemon :composeApp:wasmJsBrowserDistribution
 
       - name: Assemble the site
+        env:
+          # Play Console → App integrity → App signing key certificate → SHA-256. This is the
+          # Google Play signing certificate, not the local upload-key certificate.
+          ANDROID_APP_SIGNING_CERT_SHA256: ${{ secrets.ANDROID_APP_SIGNING_CERT_SHA256 }}
+          # A private development/debug signing certificate used for locally installed builds.
+          # It is intentionally separate from the Play App Signing certificate above.
+          ANDROID_DEBUG_SIGNING_CERT_SHA256: ${{ secrets.ANDROID_DEBUG_SIGNING_CERT_SHA256 }}
         run: |
           set -euo pipefail
           rm -rf _site
-          mkdir -p _site/intro
+          mkdir -p _site/intro _site/invite _site/.well-known
           cp -R .app/composeApp/build/dist/wasmJs/productionExecutable/. _site/
           # Source maps are a third of the payload and only useful with the sources, which are not
           # published here.
           rm -f _site/*.js.map
           cp -R intro/. _site/intro/
+          cp -R invite/. _site/invite/
+          cp .well-known/apple-app-site-association _site/.well-known/
+          if [ -n "${ANDROID_APP_SIGNING_CERT_SHA256}" ] || [ -n "${ANDROID_DEBUG_SIGNING_CERT_SHA256}" ]; then
+            jq \
+              --arg production "${ANDROID_APP_SIGNING_CERT_SHA256}" \
+              --arg debug "${ANDROID_DEBUG_SIGNING_CERT_SHA256}" \
+              '
+                . as $template
+                | [ $production, $debug | select(length > 0) ]
+                | unique
+                | . as $certificates
+                | $template
+                | map(.target.sha256_cert_fingerprints = $certificates)
+              ' .well-known/assetlinks.json.template > _site/.well-known/assetlinks.json
+          else
+            # Do not publish an incorrect upload-key fingerprint. iOS Universal Links and the
+            # uninstalled-app store fallback stay live, while Android verification turns on once
+            # a signing certificate SHA-256 is saved as a repository secret and Pages is redeployed.
+            echo "::warning::No Android signing certificate SHA-256 is configured; Android App Links are disabled."
+            printf '[]\n' > _site/.well-known/assetlinks.json
+          fi
           cp .nojekyll robots.txt sitemap.xml _site/
           echo "--- assembled site ---"
           du -sh _site

@@ -1,0 +1,18 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appID": "TUHDU89A72.dev.yjyoon.habby",
+        "components": [
+          {
+            "/": "/invite",
+            "?": {
+              "code": "*"
+            },
+            "comment": "Only team invitation links open habby."
+          }
+        ]
+      }
+    ]
+  }
+}
