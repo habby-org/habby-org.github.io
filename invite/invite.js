@@ -42,8 +42,11 @@
   fallback.textContent = isIOS ? "App Storeでダウンロード" : "Google Playでダウンロード";
   openApp.href = appUrl;
 
-  // Deliberately do not infer installation from a timer. On iOS the confirmation alert leaves the
-  // page visible while the user decides, so a timed store redirect can race the accepted app open
-  // and launch both destinations. These explicit links are deterministic; Android's intent URL
-  // retains its own browser-managed Play Store fallback when the package is absent.
+  // Automatically offer the installed app, but never infer installation with a store timer. On
+  // iOS the confirmation alert leaves this page visible while the user decides; only a timed store
+  // redirect caused the previous race. The visible link remains the fallback for WebViews that
+  // reject non-user-initiated external navigation.
+  window.setTimeout(() => {
+    window.location.href = appUrl;
+  }, 50);
 })();

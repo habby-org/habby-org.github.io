@@ -62,9 +62,9 @@ Both store controls link directly to the published habby listings in `intro/inde
 Invitations use `https://habby-org.github.io/invite/?code=<invite-code>`. Android App Links and iOS
 Universal Links claim this exact endpoint when the app is installed. If an in-app browser consumes
 the verified link and reaches the web page, `invite/index.html` offers an explicit app-only
-`habby://invite?code=<invite-code>` handoff and a separate platform-store link. It deliberately
-does not guess installation with a timer: iOS keeps the page visible while its open-app alert is
-shown, so a timed store redirect can otherwise race the accepted app launch and open both.
+`habby://invite?code=<invite-code>` handoff and a separate platform-store link. The app handoff is
+also attempted automatically, but the page deliberately has no timed store redirect: iOS keeps the
+page visible while its open-app alert is shown, so that timer could race the accepted app launch.
 
 `/.well-known/apple-app-site-association` is committed with the iOS app identifier. Android's
 `/.well-known/assetlinks.json` is generated at deployment time from the Play signing certificate
