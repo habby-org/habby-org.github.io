@@ -60,8 +60,10 @@ Both store controls link directly to the published habby listings in `intro/inde
 ## Invitation links
 
 Invitations use `https://habby-org.github.io/invite/?code=<invite-code>`. Android App Links and iOS
-Universal Links claim this exact endpoint when the app is installed. When it is not installed,
-`invite/index.html` identifies iOS or Android and opens the appropriate store listing instead.
+Universal Links claim this exact endpoint when the app is installed. If an in-app browser consumes
+the verified link and reaches the web page, `invite/index.html` retries through the app-only
+`habby://invite?code=<invite-code>` endpoint before opening the platform's store listing. This
+keeps the shared URL install-safe without assuming every embedded browser honors verified links.
 
 `/.well-known/apple-app-site-association` is committed with the iOS app identifier. Android's
 `/.well-known/assetlinks.json` is generated at deployment time from the Play signing certificate

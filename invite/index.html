@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
+    <meta name="apple-itunes-app" content="app-id=6790799084" />
     <link rel="icon" href="./assets/habby-icon.png?v=20260921" />
     <link rel="apple-touch-icon" href="./assets/habby-icon.png?v=20260921" />
     <title>habby を開いています</title>
@@ -49,14 +50,21 @@
         font-weight: 700;
         text-decoration: none;
       }
+      a.secondary {
+        display: none;
+        margin-top: 12px;
+        background: transparent;
+        color: #5F6875;
+      }
     </style>
   </head>
   <body>
     <main>
       <img class="mark" src="./assets/habby-icon.png?v=20260921" alt="habby" />
       <h1>habby を開いています</h1>
-      <p id="message">アプリをお持ちでない場合は、ストアへご案内します。</p>
-      <a id="fallback" href="/intro/">habby の紹介を見る</a>
+      <p id="message">アプリをお持ちの場合は、そのまま habby へ移動します。</p>
+      <a id="open-app" href="/intro/">habby で開く</a>
+      <a class="secondary" id="fallback" href="/intro/">habby の紹介を見る</a>
     </main>
     <script src="./invite.js"></script>
   </body>
