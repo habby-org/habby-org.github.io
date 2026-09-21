@@ -59,7 +59,7 @@ Both store controls link directly to the published habby listings in `intro/inde
 
 ## Invitation links
 
-Invitations use `https://habby-org.github.io/invite?code=<invite-code>`. Android App Links and iOS
+Invitations use `https://habby-org.github.io/invite/?code=<invite-code>`. Android App Links and iOS
 Universal Links claim this exact endpoint when the app is installed. When it is not installed,
 `invite/index.html` identifies iOS or Android and opens the appropriate store listing instead.
 

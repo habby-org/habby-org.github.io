@@ -9,7 +9,14 @@
             "?": {
               "code": "*"
             },
-            "comment": "Only team invitation links open habby."
+            "comment": "The non-trailing form remains valid while previously shared links exist."
+          },
+          {
+            "/": "/invite/",
+            "?": {
+              "code": "*"
+            },
+            "comment": "Canonical GitHub Pages team invitation URL."
           }
         ]
       }
