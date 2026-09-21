@@ -42,36 +42,8 @@
   fallback.textContent = isIOS ? "App Storeでダウンロード" : "Google Playでダウンロード";
   openApp.href = appUrl;
 
-  let fallbackTimer = null;
-  let leftPage = false;
-
-  const cancelFallback = () => {
-    leftPage = true;
-    if (fallbackTimer !== null) window.clearTimeout(fallbackTimer);
-  };
-
-  document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "hidden") cancelFallback();
-  });
-  window.addEventListener("pagehide", cancelFallback);
-
-  const launchApp = () => {
-    leftPage = false;
-    if (fallbackTimer !== null) window.clearTimeout(fallbackTimer);
-    fallbackTimer = window.setTimeout(() => {
-      if (!leftPage && document.visibilityState === "visible") {
-        window.location.replace(destination);
-      }
-    }, 1800);
-    window.location.href = appUrl;
-  };
-
-  openApp.addEventListener("click", (event) => {
-    event.preventDefault();
-    launchApp();
-  });
-
-  // Preserve automatic handoff while giving iOS enough time to background Safari before deciding
-  // that the scheme was unhandled. The button covers WebViews that block automatic navigation.
-  window.setTimeout(launchApp, 50);
+  // Deliberately do not infer installation from a timer. On iOS the confirmation alert leaves the
+  // page visible while the user decides, so a timed store redirect can race the accepted app open
+  // and launch both destinations. These explicit links are deterministic; Android's intent URL
+  // retains its own browser-managed Play Store fallback when the package is absent.
 })();
